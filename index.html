@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prove Jump</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="start-screen" class="screen">
+    <h1>Prove Jump</h1>
+    <p>
+      🥚 Choose your egg and jump into action!<br>
+      💎 Collect as many $PROVE as you can in 120 seconds.<br>
+      ⚠️ Replace your cracked egg often! Don’t crack!<br>
+          You only have ❤️ x3 lives.<br>
+      🎯 Ready? Let’s jump!
+    </p>
+  <p class="disclaimer" style="font-size: 0.8em; color: #888; max-width: 600px; margin: 10px auto;">
+    This game was created purely for fun and entertainment purposes. All graphics, names, and tokens used are fictional or used under fair use. No financial value is implied or represented.
+  </p>
+    <button onclick="showEggSelection()">Start</button>
+  </div>
+
+  <div id="egg-selection" class="screen hidden">
+    <h2>Select Your Egg</h2>
+    <div id="gray-eggs"></div>
+  </div>
+
+  <div id="game-container" class="screen hidden">
+    <canvas id="gameCanvas" width="1000" height="500"></canvas>
+    <div class="ui">
+      <div>❤️ Lives: <span id="lives">3</span></div>
+      <div>⏱️ Time: <span id="timer">120</span>s</div>
+      <div>
+        <img src="assets/prove.png" alt="prove" style="width:40px; height:26px; vertical-align:middle; margin-right:5px;">
+        $PROVE: <span id="prove">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="game-over" class="screen hidden game-over-screen">
+    <div class="end-screen-content">
+      <h1>💔 Game Over</h1>
+      <p>Oops! Your egg cracked too much...</p>
+      <p>💡 Tip: Time your jumps and avoid too many hard landings! And speeding up is not always good.</p>
+      <button onclick="restartGame()">Try Again</button>
+    </div>
+  </div>
+
+  <div id="victory" class="screen hidden victory-screen">
+    <div class="end-screen-content">
+      <h1>🏆 Eggcellent!</h1>
+      <p>Your egg survived and you gathered proves like a pro!</p>
+      <p style="font-size: 1.8em; font-weight: bold; color: #e91e63; margin-top: 20px;">
+        <img src="assets/prove.png" alt="prove" style="width:65px;height:35px; vertical-align:middle;"> 
+        <span id="prove-count"></span> proves!
+      </p>
+      <button onclick="restartGame()">Play Again</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

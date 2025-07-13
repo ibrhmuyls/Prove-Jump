@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #ffe6f0, #fff0f5);
+  color: #444;
+  text-align: center;
+}
+
+h1, h2 {
+  color: #e91e63;
+}
+
+#jump-button {
+  border: none;
+  border-radius: 12px;
+  background-color: #f06292;
+  color: white;
+  font-weight: bold;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  background-color: #f48fb1;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #ec407a;
+}
+
+canvas {
+  border: 3px solid #f8bbd0;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+.ui {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 800px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #880e4f;
+}
+
+#start-screen p {
+  max-width: 600px;
+  margin: 15px auto 30px auto;
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+#gray-eggs {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#gray-eggs img {
+  width: 80px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#gray-eggs img:hover {
+  transform: scale(1.1);
+}
+
+/* === End Screens (Victory & Game Over) === */
+#game-over, #victory {
+  background: linear-gradient(135deg, #f8bbd0, #fce4ec);
+}
+
+#game-over h1, #victory h1 {
+  font-size: 3rem;
+  color: #e91e63;
+  text-shadow: 0 0 10px #f06292, 0 0 20px #ec407a;
+  margin-bottom: 20px;
+  animation: glow 1.5s infinite alternate;
+}
+
+#game-over p, #victory p {
+  max-width: 500px;
+  background: rgba(255, 240, 245, 0.9);
+  padding: 20px;
+  border-radius: 12px;
+  color: #880e4f;
+  font-weight: 500;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+#game-over button, #victory button {
+  margin-top: 30px;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #f06292, 0 0 20px #ec407a;
+  }
+  to {
+    text-shadow: 0 0 20px #f06292, 0 0 30px #ec407a;
+  }
+}
