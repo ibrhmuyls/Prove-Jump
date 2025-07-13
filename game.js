@@ -299,7 +299,21 @@ function drawEntities() {
   ctx.fillStyle = "#ec407a";
   platforms.forEach(p => ctx.fillRect(p.x, p.y, p.width, p.height));
 }
+/* ==== Mobil + Masaüstü için ortak zıplama fonksiyonları ============ */
+function jumpPress() {                     // basıldığı an
+  if (!gameStarted) return;
+  if (player.onGround) {
+    player.dy = player.jumpPower;          // tam güç zıpla
+    player.onGround = false;
+  }
+}
 
+function jumpRelease() {                   // bırakıldığı an
+  if (!gameStarted) return;
+  if (player.dy < -6) {                    // yarıda kes → alçak zıplama
+    player.dy = -6;
+  }
+}
 function updatePlayer() {
   player.dy += player.gravity;
   player.y  += player.dy;
@@ -463,15 +477,27 @@ window.addEventListener("keyup", (e) => {
   }
 });
 
-document.getElementById("gameCanvas").addEventListener("touchstart", (e) => {
-  e.preventDefault(); // Sayfanın kaymasını engeller
-  if (!gameStarted) return;
+/* ==== Dokunmatik + Fare + Kalem hepsi için tek çözü m =============== */
+const canvasEl = document.getElementById("gameCanvas");
 
-  if (player.onGround) {
-    player.dy = player.jumpPower;
-    player.onGround = false;
+/* Basma */
+canvasEl.addEventListener("pointerdown", (e) => {
+  if (e.pointerType === "touch" || e.pointerType === "mouse") {
+    e.preventDefault();                    // kaydırma/zoom engeli
+    jumpPress();
   }
 });
+
+/* Bırakma — parmak tuval dışına çıksa bile yakalamak için window’da */
+window.addEventListener("pointerup", (e) => {
+  if (e.pointerType === "touch" || e.pointerType === "mouse") {
+    e.preventDefault();
+    jumpRelease();
+  }
+});
+
+/* Çok parmakla zoom’u tamamen kapatmak istersen: */
+canvasEl.style.touchAction = "none";
 
 function restartGame() {
   // Oyun döngüsü ve zamanlayıcıları durdur
