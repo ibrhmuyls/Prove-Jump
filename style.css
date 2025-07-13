@@ -50,11 +50,17 @@ button:hover {
 }
 
 canvas {
+  width: 95vw;       /* Ekran genişliğinin %95'i */
+  height: auto;      /* Yükseklik otomatik */
+  max-width: 1000px; /* Maksimum genişlik */
   border: 3px solid #f8bbd0;
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(0,0,0,0.1);
   margin-top: 20px;
+  display: block;    /* Altındaki boşlukları azaltmak için */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ui {
